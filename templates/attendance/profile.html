@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <!-- ===== ===== Custom Css ===== ===== -->
+    <link rel="stylesheet" href="{% static 'profile_style.css'%}">
+    <link rel="stylesheet" href="{% static 'profile_responsive.css'%}">
+
+    <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ===== ===== Body Main-Background ===== ===== -->
+    <span class="main_bg"></span>
+
+
+    <!-- ===== ===== Main-Container ===== ===== -->
+    <div class="container">
+
+        <!-- ===== ===== Header/Navbar ===== ===== -->
+        <header>
+            <div class="brandLogo">
+                <figure><img src="{% static 'images/deerwalklogo.png' %}" alt="logo" width="40px" height="40px"></figure>
+                <span>Deerwalk Institute Of Technology</span>
+            </div>
+        </header>
+
+
+        <!-- ===== ===== User Main-Profile ===== ===== -->
+        <section class="userProfile card">
+            <div class="profile">
+                <figure><img src="{% static 'images/deerwalklogo.png' %}" alt="profile" width="250px" height="250px"></figure>
+            </div>
+        </section>
+
+        <!-- ===== ===== Work & Skills Section ===== ===== -->
+        <section class="work_skills card">
+            <!-- ===== ===== Work Contaienr ===== ===== -->
+            <div class="work">
+                <h1 class="heading">work</h1>
+                <div class="primary">
+                    <h1>DWIT Kathmandu</h1>
+                    <!-- <span>Primary</span> -->
+                    <p> Sifal <br> Kathmandu, Nepal</p>
+            </div>
+                <br>
+                <br>
+                
+            <!-- ===== ===== Skills Contaienr ===== ===== -->
+            <div class="skills">
+                <h1 class="heading">Skills</h1>
+                <ul>
+                    <li style="--i:0">Android</li>
+                    <li style="--i:1">Web-Design</li>
+                    <li style="--i:2">UI/UX</li>
+                    <li style="--i:3">Video Editing</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- ===== ===== User Details Sections ===== ===== -->
+        <section class="userDetails card">
+            <div class="userName">
+                <h1 class="name">Your Name</h1>
+                <div class="map">
+                    <i class="ri-map-pin-fill ri"></i>
+                    <span>Your Address</span>
+                </div>
+                <p>Course_Name Instructor</p>
+            </div>
+                <br>
+            <div class="rank">
+                <h1 class="heading">Rankings Yaha Course Paxi ko review anusar ko rating</h1>
+                <span>8,6</span>
+                <div class="rating">
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate underrate"></i>
+                </div>
+            </div>
+
+        </section>
+       
+
+
+
+        <!-- ===== ===== Timeline & About Sections ===== ===== -->
+        <section class="timeline_about card">
+            <div class="tabs">
+                <ul>
+                    <li class="timeline">
+                        <i class="ri-briefcase-4-fill"></i> &nbsp;
+                        <span>Experience</span>
+                    </li>
+
+                    <li class="about active">
+                        <i class="ri-user-3-fill ri"></i>
+                        <span>About</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact_info">
+                <h1 class="heading"> Contact Information</h1>
+                <ul>
+                    <li class="phone">
+                        <h1 class="label">Phone:</h1> 
+                        <!-- Js use garera input box dini ki tw naya page ma render garni 
+                        ani form display garera input lini -->
+                        <span class="info"> 
+                            Enter Number (Primary) <br> Enter Number (Secondary) </span>
+                        
+                    </li>
+                        <!-- <li class="address">
+                            <h1 class="label">Primary:</h1>
+                            <span class="info"> 9861000000 </span> &nbsp; &nbsp; <a href="#"> Edit </a>
+                        </li>
+
+                        <li class="address">
+                            <h1 class="label">Secondary:</h1>
+                            <span class="info"> 9861000000 </span> &nbsp; &nbsp; <a href="#"> Edit </a>
+                        </li> -->
+                        
+                    </li>
+
+                    <li class="address">
+                        <h1 class="label">Address:</h1>
+                        <span class="info">Your Add <br> Add Detail</span>
+                    </li>
+
+                    <li class="email">
+                        <h1 class="label">E-mail:</h1>
+                        <span class="info">hello@rsmarquetech.com</span> &nbsp; &nbsp; 
+                    </li>
+
+                    <li class="site">
+                        <h1 class="label">Social Media :</h1>
+                        <i class="ri-facebook-circle-line"></i> &nbsp; 
+                        <i class="ri-twitter-line"></i>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="basic_info">
+                <h1 class="heading">Basic Information</h1>
+                <ul>
+                    <li class="birthday">
+                        <h1 class="label">Date Of Birth:</h1>
+                        <span class="info">Date</span>
+                    </li>
+
+                    <li class="sex">
+                        <h1 class="label">Gender:</h1>
+                        <span class="info">Gender</span>
+                    </li>
+                </ul>
+            </div>
+            <button class> Pick up!
+            </button>
+        </section>
+    </div>
+
+</body>
+
+</html>

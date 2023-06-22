@@ -5,7 +5,9 @@
 {% endblock link %}
 {% block Title %} Logged In {% endblock Title %}
 {% block body %}
-
+{% for datas in data %}
+<P>{{data.course.title}}</P>
+{% endfor %}
 
 {% if messages %}
 {% for message in messages %} 
