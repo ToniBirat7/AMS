@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Person
+from .forms import ImageForm
 # Create your views here.
 def logged_In(request):
     if request.user.is_authenticated:
@@ -23,7 +24,8 @@ def Profile(request):
     # for datas in data:
     #     a.append(datas)
     # print(a)
-    return render(request, 'attendance/profile.html')
+    form = ImageForm()
+    return render(request, 'attendance/profile.html',{'form' : form})
 
 '''{% extends "core/base.html" %}
 {% block body %}

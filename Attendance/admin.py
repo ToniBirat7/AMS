@@ -21,7 +21,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Person)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'primary_number','secondary_number','address','DOB']
+    list_display = ['id', 'user', 'primary_number','secondary_number','sex','my_image','address','DOB']
 
 
 

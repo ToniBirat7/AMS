@@ -69,8 +69,8 @@ class Person(models.Model):
     DOB = models.DateField()
     primary_number = models.CharField(max_length=10, null=True, unique=True)
     secondary_number = models.CharField(max_length=10, null=True, unique=True)
-    sex = models.CharField(max_length=1, choices=Gender)
-
+    sex = models.CharField(max_length=10, choices=Gender)
+    my_image = models.ImageField(upload_to='profile_img/', null=True)
     def __str__(self):
         return self.user.first_name
     

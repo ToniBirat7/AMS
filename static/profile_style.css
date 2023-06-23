@@ -159,6 +159,7 @@ header {
 }
 
 /* ===== =====>>  User Main-Profile Css Start  <<===== ===== */
+
 .container .userProfile {
   position: relative;
   display: flex;
@@ -169,6 +170,8 @@ header {
   backdrop-filter: none;
   box-shadow: none;
 }
+
+
 
 .container .userProfile .profile figure img {
   width: 18rem;
