@@ -18,14 +18,12 @@ def logged_In(request):
     
 
 def Profile(request):
-    # user_id = request.user.id
-    # data = Person.objects.filter(user_id=user_id)
-    # a = []
-    # for datas in data:
-    #     a.append(datas)
-    # print(a)
+    user_id = request.user.id
+    print(user_id)
+    data = Person.objects.get(user_id=user_id)
+    print(data.user.date_joined)  
     form = ImageForm()
-    return render(request, 'attendance/profile.html',{'form' : form})
+    return render(request, 'attendance/profile.html', {'profile' : data , 'form' : form} )
 
 '''{% extends "core/base.html" %}
 {% block body %}
@@ -35,3 +33,6 @@ def Profile(request):
 <p>{{data.user}}</p>
 
 {% endblock body %}'''
+
+def EditProfile(request):
+    return render(request, 'attendance/edit-profile.html')

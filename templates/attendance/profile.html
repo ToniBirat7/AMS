@@ -35,18 +35,24 @@
         <!-- ===== ===== User Main-Profile ===== ===== -->
         <section class="userProfile card">
             <div class="profile">
-                <figure><img src="{% static 'images/Profile.jpg' %}" alt="profile" width="250px" height="250px"></figure>
+                <figure><img src="{{profile.my_image.url}}" alt="profile" width="250px" height="250px"></figure>
+            <div class="media-file">
+                    <form method="POST" enctype="multipart/form-data">
+                        {{form.as_p}}
+                        <button type="submit">Upload</button>
+                    </form>
+            </div> 
             </div>
         </section>
         
 
         <!-- ===== ===== Work & Skills Section ===== ===== -->
         <section class="work_skills card">
-            <!-- ===== ===== Work Contaienr ===== ===== -->
+            <!-- ===== ===== Work Container ===== ===== -->
             <div class="work">
                 <h1 class="heading">work</h1>
                 <div class="primary">
-                    <h1>DWIT Kathmandu</h1>
+                    <h1>Deerwalk Institute of Technology</h1>
                     <!-- <span>Primary</span> -->
                     <p> Sifal <br> Kathmandu, Nepal</p>
             </div>
@@ -69,22 +75,63 @@
         <!-- ===== ===== User Details Sections ===== ===== -->
         <section class="userDetails card">
             <div class="userName">
-                <h1 class="name">Your Name</h1>
+                <h1 class="name">{{user.first_name}} {{user.last_name}}</h1>
                 <div class="map">
-                    <i class="ri-map-pin-fill ri"></i>
-                    <span>Your Address</span>
+                    <i class="ri-map-pin-fill ri"></i> 
+                    <span>{{profile.address}}</span>
                 </div>
-                <p>Course_Name Instructor</p>
+                <p>{{profile.course.title}} &nbsp; &nbsp; Instructor</p>
             </div>
                 <br>
             <div class="rank">
                 <h1 class="heading">Rankings Yaha Course Paxi ko review anusar ko rating</h1>
-                <span>8,6</span>
+                <!-- Rating field bata previous year ko rating ko data lyaune tei anusar star rakh
+                if rating gt something this rating else this rating 
+                
+                {% comment %}
+                {{profile.rating as rank}}
+                <span>{{rank}}</span>
+                {% if rank > 1 and rank <= 2%}
+                <div class="rating">
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate underrate"></i>
+                    <i class="ri-star-fill rate underrate"></i>
+                    <i class="ri-star-fill rate underrate"></i>
+                </div>
+                {% elif rank >2 and <=3 %}
+                <div class="rating">
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate underrate"></i>
+                    <i class="ri-star-fill rate underrate"></i>
+                </div>
+                {% elif rank >3 and <=4 %}
                 <div class="rating">
                     <i class="ri-star-fill rate"></i>
                     <i class="ri-star-fill rate"></i>
                     <i class="ri-star-fill rate"></i>
                     <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate underrate"></i>
+                </div>
+                {% else}
+                <div class="rating">
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                </div>
+
+                {% endcomment %}
+                 -->
+                <span>8,6</span>
+                <div class="rating">
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate"></i>
+                    <i class="ri-star-fill rate underrate"></i>
                     <i class="ri-star-fill rate underrate"></i>
                 </div>
             </div>
@@ -118,35 +165,28 @@
                         <!-- Js use garera input box dini ki tw naya page ma render garni 
                         ani form display garera input lini -->
                         <span class="info"> 
-                            Enter Number (Primary) <br> Enter Number (Secondary) </span>
+                            {{profile.primary_number}} (Primary) <br> {{profile.secondary_number}} (Secondary) </span>
                         
                     </li>
-                        <!-- <li class="address">
-                            <h1 class="label">Primary:</h1>
-                            <span class="info"> 9861000000 </span> &nbsp; &nbsp; <a href="#"> Edit </a>
-                        </li>
-
-                        <li class="address">
-                            <h1 class="label">Secondary:</h1>
-                            <span class="info"> 9861000000 </span> &nbsp; &nbsp; <a href="#"> Edit </a>
-                        </li> -->
-                        
                     </li>
 
                     <li class="address">
                         <h1 class="label">Address:</h1>
-                        <span class="info">Your Add <br> Add Detail</span>
+                        <span class="info">{{profile.address}} <br> Address Detail</span>
                     </li>
 
                     <li class="email">
                         <h1 class="label">E-mail:</h1>
-                        <span class="info">hello@rsmarquetech.com</span> &nbsp; &nbsp; 
+                        <span class="info">{{profile.user.email}}</span> &nbsp; &nbsp; 
                     </li>
 
                     <li class="site">
                         <h1 class="label">Social Media :</h1>
-                        <i class="ri-facebook-circle-line"></i> &nbsp; 
-                        <i class="ri-twitter-line"></i>
+                        <!-- Take Links from Model Field -->
+                        <a href="facebook-link"><i class="ri-facebook-circle-line"></i> &nbsp; </a>
+                        <a href="twitter-link"><i class="ri-twitter-line"></i> &nbsp; </a>
+                        <a href="github-link"><i class="ri-github-fill"></i> &nbsp; </a>
+                        <a href="linkedin-link"><i class="ri-linkedin-box-fill"></i> &nbsp; </a>
                     </li>
                 </ul>
             </div>
@@ -156,18 +196,20 @@
                 <ul>
                     <li class="birthday">
                         <h1 class="label">Date Of Birth:</h1>
-                        <span class="info">Date</span>
+                        <span class="info">{{profile.DOB}}</span>
                     </li>
 
                     <li class="sex">
                         <h1 class="label">Gender:</h1>
-                        <span class="info">Gender</span>
+                        <span class="info">{{profile.sex}}</span>
                     </li>
                 </ul>
             </div>
-            <button>Edit Profile</button>
-        </section>
+            <button class="button2">
+                <i class="ri-pencil-fill"></i> 
+                <a href="{% url 'edit-profile'  %}">Edit Profile</a>
+                </button>
+                </section>
     </div>
-    
 </body>
 </html>
