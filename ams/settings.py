@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'auth_app',
     'Attendance',
-    'phone_field',
 ]
 
 MIDDLEWARE = [

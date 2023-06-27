@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Person
 from .forms import ImageForm
+
 # Create your views here.
 def logged_In(request):
     if request.user.is_authenticated:
@@ -19,20 +20,25 @@ def logged_In(request):
 
 def Profile(request):
     user_id = request.user.id
-    print(user_id)
     data = Person.objects.get(user_id=user_id)
-    print(data.user.date_joined)  
-    form = ImageForm()
+    if request.method == 'GET':
+        form = ImageForm()
+    else:
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            img = form.cleaned_data['image']
+            data.my_image = img
+            data.save()
     return render(request, 'attendance/profile.html', {'profile' : data , 'form' : form} )
 
-'''{% extends "core/base.html" %}
-{% block body %}
-{% for datas in data %}
-<p>{{datas.address}}</p>
-{% endfor %}
-<p>{{data.user}}</p>
-
-{% endblock body %}'''
+def ImageDelete(request):
+    form = ImageForm()
+    user_id = request.user.id
+    data = Person.objects.get(user_id=user_id)
+    data.my_image.delete()
+    data.my_image = 'NA'
+    data.save()
+    return redirect('profile')
 
 def EditProfile(request):
     return render(request, 'attendance/edit-profile.html')

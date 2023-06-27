@@ -18,7 +18,7 @@
 <body>
     <!-- ===== ===== Body Main-Background ===== ===== -->
     <span class="main_bg"></span>
-
+    
 
     <!-- ===== ===== Main-Container ===== ===== -->
     <div class="container">
@@ -27,7 +27,7 @@
         <header>
             <div class="brandLogo">
                 <figure><img src="{% static 'images/deerwalklogo.png' %}" alt="logo" width="40px" height="40px"></figure>
-                <span>Deerwalk Institute Of Technology</span>
+                <span> Deerwalk Institute Of Technology</span>
             </div>
         </header>
 
@@ -38,8 +38,10 @@
                 <figure><img src="{{profile.my_image.url}}" alt="profile" width="250px" height="250px"></figure>
             <div class="media-file">
                     <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
                         {{form.as_p}}
-                        <button type="submit">Upload</button>
+                        <button class="remove" type="submit"><a href="{% url 'image-delete' %}">Remove</a></button>
+                        <button class="upload" type="submit">Upload</button>
                     </form>
             </div> 
             </div>
@@ -209,7 +211,7 @@
                 <i class="ri-pencil-fill"></i> 
                 <a href="{% url 'edit-profile'  %}">Edit Profile</a>
                 </button>
-                </section>
+        </section>
     </div>
 </body>
 </html>
