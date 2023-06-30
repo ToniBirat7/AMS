@@ -4,16 +4,14 @@ from .forms import ImageForm
 
 # Create your views here.
 def logged_In(request):
+    user_id = request.user.id
     if request.user.is_authenticated:
-        # data1 = request.user.id
-        # # print(data1)
-        # data = Course_Teacher.objects.filter(user_id=data1)
-        # # print(data[0].course.title)
-        # for datas in data:
-        #     # a = {'title' : datas.course.title , 'duration' :  datas.course.duration , 'shift' : datas.course.shift }
-        #     print(datas.course.title, datas.course.duration, datas.course.shift)
-        # # print(a)
-        return render(request,'attendance/course_list.html')
+        if request.method == 'GET':
+            course = Person.objects.get(user_id = user_id)
+            return render(request,'attendance/course_list.html',{'course' : course})
+        else:
+            status = request.POST['status']   
+        print(status)
     else:
         return redirect('login')
     
@@ -21,18 +19,21 @@ def logged_In(request):
 def Profile(request):
     user_id = request.user.id
     data = Person.objects.get(user_id=user_id)
-    if request.method == 'GET':
-        form = ImageForm()
+    print(data.user.first_name)
+    if data is not None:
+        if request.method == 'GET':
+            form = ImageForm()
+        else:
+            form = ImageForm(request.POST, request.FILES)
+            if form.is_valid():
+                img = form.cleaned_data['image']
+                data.my_image = img
+                data.save()
     else:
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            img = form.cleaned_data['image']
-            data.my_image = img
-            data.save()
+        print('Invalid User')
     return render(request, 'attendance/profile.html', {'profile' : data , 'form' : form} )
 
 def ImageDelete(request):
-    form = ImageForm()
     user_id = request.user.id
     data = Person.objects.get(user_id=user_id)
     data.my_image.delete()
@@ -41,4 +42,23 @@ def ImageDelete(request):
     return redirect('profile')
 
 def EditProfile(request):
-    return render(request, 'attendance/edit-profile.html')
+    user_id = request.user.id
+    if request.method == 'GET':
+        data = Person.objects.get(user_id=user_id)
+        return render(request, 'attendance/edit-profile.html',{'datas' : data})
+    else:
+        data = Person.objects.get(user_id=user_id)
+        print(data.id)
+        print(request.POST)
+        # data.DOB = request.POST['DOB']
+        data.primary_number = request.POST['primary_number']
+        data.address = request.POST['address']
+        data.secondary_number = request.POST['secondary_number']
+        data.save()
+    return redirect('profile')
+
+
+
+
+
+

@@ -19,9 +19,9 @@
     <!-- ===== ===== Body Main-Background ===== ===== -->
     <span class="main_bg"></span>
     
-
     <!-- ===== ===== Main-Container ===== ===== -->
     <div class="container">
+        
 
         <!-- ===== ===== Header/Navbar ===== ===== -->
         <header>
@@ -40,11 +40,11 @@
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form.as_p}}
-                        <button class="remove" type="submit"><a href="{% url 'image-delete' %}">Remove</a></button>
+                        <button class="remove"><a href="{% url 'image-delete' %}">Remove</a></button>
                         <button class="upload" type="submit">Upload</button>
                     </form>
             </div> 
-            </div>
+            </div>  
         </section>
         
 
@@ -207,10 +207,9 @@
                     </li>
                 </ul>
             </div>
-            <button class="button2">
-                <i class="ri-pencil-fill"></i> 
-                <a href="{% url 'edit-profile'  %}">Edit Profile</a>
-                </button>
+                <div class="edit-profile">
+                    <a href="{% url 'edit-profile'  %}"><button class="button2"><i class="ri-pencil-fill"></i>Edit Profile</button></a>
+                </div>
         </section>
     </div>
 </body>

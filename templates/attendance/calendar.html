@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+{% load static  %}
+{% block link %}
+  <link rel="stylesheet" href="{% static 'calendar.css'%}">
+{% endblock link %}
+{% block body %}
+
+<div class="container">
+    {{cal|safe}}
+</div>
+{% endblock body %}
