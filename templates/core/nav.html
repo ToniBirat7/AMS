@@ -1,14 +1,11 @@
-
  {% load static %}
   <nav>
     <div class="left-section">
-      <a href="#" class="nav-link">
         <img src="{% static 'images/deerwalklogo.png' %}" alt="Logo" class="logo-image">
-      </a>
-      <a href="{% url 'profile' %}" class="nav-link">Profile</a>
-      <a href="#" class="nav-link">Course</a>
+      <a href="{% url 'profile' %}" class="profiles nav-link">Profile</a>
+      <a href="{% url 'logged_in' %}" class="course nav-link">Course</a>
     </div>
     <div class="right-section">
-      <a href="{% url 'logout' %}" class="nav-link">Sign Out</a>
+      <a href="{% url 'logout' %}" class="sign-out nav-link">Log Out</a>
     </div>
   </nav>

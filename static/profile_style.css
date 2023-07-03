@@ -14,7 +14,7 @@
 
 /* ===== =====>>  Body Font Size  <<===== =====  */
 html {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 /* ===== =====>> Css Variables  <<===== =====  */
@@ -70,7 +70,8 @@ html {
 }
 
 /* ===== =====>>  Body Css  <<===== =====  */
-body {
+.body {
+  margin-top: -20px;
   display: flex;
   justify-content: center;
   align-items: center;

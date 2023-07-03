@@ -10,12 +10,15 @@
     <!-- ===== ===== Custom Css ===== ===== -->
     <link rel="stylesheet" href="{% static 'profile_style.css'%}">
     <link rel="stylesheet" href="{% static 'profile_responsive.css'%}">
+    <link rel="stylesheet" href="{% static 'nav.css'%}">
 
     <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
+    {% include 'core/nav.html' %}
+    <div class="body">
     <!-- ===== ===== Body Main-Background ===== ===== -->
     <span class="main_bg"></span>
     
@@ -212,5 +215,6 @@
                 </div>
         </section>
     </div>
+</div>
 </body>
 </html>

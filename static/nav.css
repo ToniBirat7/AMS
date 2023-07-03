@@ -1,58 +1,92 @@
-logo-image {
-    width: 50px;
-    height: auto;
-  }
-  
+ 
 nav {
-    background-color: #f2f2f2;
-    padding: 10px;
+    background-color: #0d5b93;
+    padding: 8px;
     display: flex;
     justify-content: space-between;
   }
   
-  .left-section {
+.left-section {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+.logo-image {
+    width: 55px;
+    height: auto;
+    margin-left: 0px;
+    margin-right: 50px;
+    border: solid;
+    color: #0d5b93;
+    border-radius: 100%;
+    box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+  }
+  
+.right-section {
     display: flex;
     align-items: center;
   }
-  
-  .right-section {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    font-weight: bold;
-    margin-right: 20px;
+.nav-link {
     text-decoration: none;
-    color: #333;
-  }
-  
-  .nav-link {
-    text-decoration: none;
-    color: #333;
-    margin-right: 10px;
+    color: #ffffff;
     position: relative;
+    margin-left: 30px;
   }
+
+.profiles{
+    margin-right: 40px;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 8px;
+    padding:  12px;
+    border-color: #0d5b93;
+    box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.2);
+
+  }
+.course{
+  margin-right: 70px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 8px;
+  padding:  12px;
+  border-color: #0d5b93;
+  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.2);
+
+}
+
+.sign-out{
+  margin-right: 40px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 8px;
+  padding:  12px;
+  border-color: #0d5b93;
+  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+}
   
-  .nav-link::before {
+.nav-link::before {
     content: "";
     position: absolute;
     width: 0;
     height: 2px;
     bottom: -2px;
     left: 0;
-    background-color: #666;
+    background-color: #ffffff;
     transition: width 0.3s ease;
   }
   
-  .nav-link:hover::before {
+.nav-link:hover::before {
     width: 100%;
   }
   
-  a {
+a {
     transition: transform 0.3s ease;
   }
   
-  a:hover {
+a:hover {
     transform: scale(1.1);
   }

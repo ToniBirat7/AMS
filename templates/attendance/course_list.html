@@ -7,20 +7,20 @@
 {% block body %}
 
 <div class="center">
-<div class="blog_post">
+ <div class="blog_post">
   <div class="img_pod">
-    <img src="{% static 'images/deerwalklogo.png' %}" alt="random image">
+    <img src="{% static 'images/deerwalklogo.png' %}" alt="random image" class="teacher-img">
   </div>
   <div class="container_copy">
-    <h3>Course </h3>
+    <h3>Course  </h3>
     <h1>Data Science </h1>
     <h3>Teacher  </h3>
     <h1>Umesh Regmi </h1>
     <h3>Description  </h3>
     <p>This Course is Taught by Umesh Regmi.</p>
     <div class="button2">
-    <a  href="{% url 'display-calendar' %}"><button class="logo"> Take Attendance</button> </a>
-    <a  href='#' ><button class="logo1">Report </button> </a>
+    <a  href="{% url 'display-calendar' %}"><button class="calendar"> Take Attendance</button> </a>
+    <a  href='#' ><button class="cal-report">Report </button> </a>
     </div>
   </div>
 </div>
