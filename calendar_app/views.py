@@ -31,7 +31,7 @@ def Display_Calendar(request):
 # student status using student id from POST data 
 # saving the data in Attendance Model by creating object 
 def ChooseDate(request,date):
-    data = Student.objects.all().order_by('name') # student data for student list 
+    student_list = Student.objects.all().order_by('name') # student data for student list 
     new_date = datetime.strptime(date,"%Y-%m-%d").date()
     print(type(date))
     print(type(new_date))
@@ -42,13 +42,12 @@ def ChooseDate(request,date):
         print(type(date_info.today_date))
         print('Date Info')
         print(request.POST)
-        for student in data:
+        for student in student_list:
             status_value = request.POST[str(student.id)]
             print('Student Info')
             print(student.id,status_value)
             Attendance.objects.create(date_id = date_info.id, student_id = student.id, status = status_value)
-        messages.success(request,'Attendance is Taken')
-        return render(request,'calendar/student_list.html',{'data': data,'month': month_name,'today_date': todays_date})   
+        return render(request,'calendar/student_list.html',{'data': student_list,'month': month_name,'today_date': todays_date})   
     else:
         start_week = todays_date - timedelta(days=7)
         end_week = start_week + timedelta(days=6)
@@ -59,7 +58,7 @@ def ChooseDate(request,date):
             print('pppp*********')
             print(d.today_date)
             print(d.today_date.day)
-        return render(request,'calendar/student_list.html', {'data': data,'month': month_name,'today_date': todays_date,'past_date': past_date})
+        return render(request,'calendar/student_list.html', {'data': student_list,'month': month_name,'today_date': todays_date,'past_date': past_date})
 
 
 
