@@ -1,3 +1,237 @@
-.container{
-    background-color: antiquewhite;
+:root {
+    --dark-body: #4d4c5a;
+    --dark-main: #141529;
+    --dark-second: #79788c;
+    --dark-hover: #323048;
+    --dark-text: #f8fbff;
+
+    --light-body: #f3f8fe;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
+    --light-hover: #edf0f5;
+    --light-text: #151426;
+
+    --blue: #0000ff;
+    --white: #fff;
+
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    --font-family: cursive;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    display: grid;
+    place-items: center;
+    font-family: cursive;
+}
+
+.cal-title{
+    margin: 10px;
+    display: flex;
+    text-align: center;
+}
+
+.cal-title .body-h1 {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    text-transform: capitalize;
+    color: #080808;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+  }
+  
+.cal-title .body-h1 .body-span {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 3em;
+    padding-left: 0.25em;
+    color: rgba(0, 0, 0, 0.4);
+    padding-bottom: 10px;
+  }
+ 
+.calendar {
+    margin-top: -20px;
+    height: max-content;
+    width: max-content;
+    background-color: #edf0f5;
+    border-radius: 30px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600px;
+    color: #151426;
+    padding: 10px;
+}
+
+.calendar-body {
+    padding: 10px;
+
+}
+
+.calendar-week-day {
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+    height: 50px;
+}
+
+.calendar-week-day div {
+    display: grid;
+    place-items: center;
+    color: #79788c;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    color: #151426;
+}
+
+.calendar-days div {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding: 5px;
+    position: relative;
+    animation: to-top 1s forwards; 
+    border-radius: 50px;
+}
+
+/* .calendar-days .h1{
+    background-color: lightgray;
+    margin-top: 18px;
+    margin-left: 22px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    animation: to-top 1s forwards; 
+} */
+
+.choose-date {
+    text-decoration: none;
+}
+
+.calendar-days .today{
+    background-color: rgba(75, 73, 240, 0.803);
+    border-radius: 100px;
+    margin: 10px;
+    margin-left: 16px;
+    height: 65px;
+    width: 65px;
+    animation: to-top 1s forwards; 
+}
+.calendar-days div span {
+    position: absolute;
+}
+
+.calendar-days div:hover span {
+    transition: width 0.1s ease-in-out, height 0.2s ease-in-out;
+}
+
+.calendar-days div span:nth-child(1),
+.calendar-days div span:nth-child(3) {
+    width: 2px;
+    height: 0;
+    background-color: #151426;
+}
+
+.calendar-days div:hover span:nth-child(1),
+.calendar-days div:hover span:nth-child(3) {
+    height: 100%;
+
+}
+
+.calendar-days div span:nth-child(1) {
+    bottom: 0;
+    left: 0;
+}
+
+.calendar-days div span:nth-child(3) {
+    top: 0;
+    right: 0;
+}
+
+.calendar-days div span:nth-child(2),
+.calendar-days div span:nth-child(4) {
+    width: 0;
+    height: 2px;
+    background-color: #151426;
+}
+
+.calendar-days div:hover span:nth-child(2),
+.calendar-days div:hover span:nth-child(4) {
+    width: 100%;
+}
+
+.calendar-days div span:nth-child(2) {
+    top: 0;
+    left: 0;
+}
+
+.calendar-days div span:nth-child(4) {
+    bottom: 0;
+    right: 0;
+}
+
+.calendar-days div:hover span:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.calendar-days div:hover span:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.calendar-days div:hover span:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.year-picker {
+    display: flex;
+    align-items: center;
+}
+
+.year-change {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 10px;
+}
+
+@keyframes to-top {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

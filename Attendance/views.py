@@ -8,7 +8,7 @@ def logged_In(request):
     if request.user.is_authenticated:
         if request.method == 'GET':
             course = Person.objects.get(user_id = user_id)
-            return render(request,'attendance/course_list.html',{'course' : course})
+            return render(request,'attendance/course_list.html', {'course' : course})
         else:
             status = request.POST['status']   
         print(status)
@@ -56,6 +56,8 @@ def EditProfile(request):
         data.secondary_number = request.POST['secondary_number']
         data.save()
     return redirect('profile')
+
+
 
 
 

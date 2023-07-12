@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('auth_app.urls')),
     path('attendance/',include('Attendance.urls')),
-    path('/',include('calendar_app.urls')),
+    path('calendar/',include('calendar_app.urls')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,69 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'student_list.css' %}">
+{% endblock link %}
+
+{% block body %}
+<div class="main">
+    {% for m in messages %}
+    <p>{{m}}</p>
+    {% endfor %}
+    <h1 class="h1">Machine Learning Attendance
+    <span class="h1-span"> {{month}} {{today_date.day}}</span></h1>
+    <div class="stu-table">
+        <table>
+            <thead>
+                <tr>
+                    <th class="name-col-1">Student Name</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th class="missed-col">Status</th>
+                    <!-- <th class="missed-col">Days Missed-col</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <form method="POST">
+                    {% csrf_token %} 
+                {% for student in data %}
+                <tr class="student">
+                    <td class="name-col">{{student.name}}</td>
+                    <td class="attend-col"><p>A</p></td>
+                    <td class="attend-col"><p>A</p></td>
+                    <td class="attend-col"><p>A</p></td>
+                    <td class="attend-col"><p>A</p></td>
+                    <td class="attend-col"><p>A</p></td>
+                    <td class="attend-col"><p>A</p></td>
+                    <td class="attend-col"><p>A</p></td>
+                    <td class="attend-col"><select name="{{student.id}}">
+                        <option value="A"><button>Absent</button></option>
+                        <option value="P"><button>Present</button></option>
+                    </select></td>
+                    <!-- <td class="missed-col">0</td> -->
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td class="name-col"></td>
+                    <td class="attend-col"></td>
+                    <td class="attend-col"></td>
+                    <td class="attend-col"></td>
+                    <td class="attend-col"></td>
+                    <td class="attend-col"></td>
+                    <td class="attend-col"></td>
+                    <td class="attend-col"></td>
+                    <td class="attend-col"><button type="submit">Submit</button></td>
+                </tr>
+            </form>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+{% endblock body %}
+

@@ -6,11 +6,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!--<title>Registration Form in HTML CSS</title>-->
+    <title>AMS | Edit Profile </title>
     <!---Custom CSS File--->
     <link rel="stylesheet" href="{% static 'edit-profile.css' %}" />
+    <link rel="stylesheet" href="{% static 'nav.css' %}">
   </head>
   <body>
+    {% include "core/nav.html" %}
+    <div class="main-body">
     <section class="container">
       <header>Edit Profile Details </header>
       <form  class="form" method="POST">
@@ -64,5 +67,6 @@
         <button class="button2">Submit</button>
       </form>
     </section>
+  </div>
   </body>
 </html>

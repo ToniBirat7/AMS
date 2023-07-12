@@ -19,17 +19,6 @@ class Course(models.Model):
         verbose_name_plural = 'Courses'
         ordering = ["title"]
 
-class Course_Teacher(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return str(self.user)
-    class Meta:
-        db_table = 'Course_Teacher'
-        verbose_name_plural = 'Course_Teacher'
-
-
 class Student(models.Model):
     name = models.CharField(max_length=30)
     roll_no = models.IntegerField()
@@ -41,26 +30,9 @@ class Student(models.Model):
         db_table = 'Student'
         verbose_name_plural = 'Students'
 
-class  Attendance(models.Model):
-    status_choice = [
-        ('A','Absent'),
-        ('P','Present')
-    ]
-    date = models.DateField(auto_now_add=True)
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    status = models.CharField(max_length=1,choices=status_choice)
-
-    def __str__(self):
-        return str(self.student)
-    class Meta:
-        db_table = 'Attendance'
-        verbose_name_plural = 'Attendance'
-        ordering = ['date','student','status']
-
 Gender = [
     ('M','Male'),
     ('F','Female')
-
 ]
 
 class Person(models.Model):
@@ -72,13 +44,23 @@ class Person(models.Model):
     sex = models.CharField(max_length=10, choices=Gender)
     my_image = models.ImageField(upload_to='profile_img/', null=True)
     course = models.OneToOneField(Course, on_delete=models.CASCADE, null=True)
+
     def __str__(self):
         return self.user.first_name
     
-    class meta:
+    class Meta:
         db_table = 'Person'
         verbose_name_plural = 'Person'
+    
+class Class(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course_student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
-
+    def __str__(self):
+        return self.course.title
+    
+    class  Meta:
+        db_table = 'Class'
+        verbose_name_plural = 'Classes'
 
 
