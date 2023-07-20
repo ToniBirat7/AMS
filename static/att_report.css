@@ -1,0 +1,70 @@
+
+th {
+    background-color: #001f3f;
+    color: #fff;
+    padding: 0.5em 6.3em;
+}
+.name-col-1 {
+    text-align: center;
+    padding: 0;
+}
+
+td {
+    border-top: 2px solid #eee;
+    padding: 0.5em 1em;
+    text-align: center;
+}
+
+/* Column types */
+th.missed-col {
+    background-color: #f00;
+}
+
+td.missed-col {
+    background-color: #ffecec;
+    color: #f00;
+    text-align: center;
+}
+
+.name-col {
+    text-align: left;
+}
+
+.main{
+    overflow: hidden;
+   display: block;
+   margin-top: 10px;
+   margin-bottom: 300px;
+   width: max-content;
+   height: max-content;  
+   text-align: left;
+}
+
+.main .h1{
+    display: block;
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 0;
+    position: relative;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    text-transform: capitalize;
+    color: #080808;
+
+}
+.main .h1 .h1-span{
+    display: block;
+    font-family: "Raleway", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    line-height: 2em;
+    color: rgba(0, 0, 0, 0.4);
+    padding-bottom: 5px;
+}
+.stu-table{
+    justify-content: center;
+    align-items: center;
+}

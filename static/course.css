@@ -3,6 +3,8 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  /* font-family: "Poppins", sans-serif; */
 }
 
 html {
@@ -11,59 +13,40 @@ html {
 
 .center {
   font-family: "Roboto", sans-serif;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  
+  position: relative;
+  display: inline-block;
+  margin-top: 30px;
+  left: 25%;
 } 
 
+.center .h1{
+ text-align: center;
+} 
+
+.center .course_anchor{
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .blog_post {
-  background: #fff;
-  width: 560px;
-  height: 370px;
-  border-style: solid;
-  border-width: 4px;
-  border-color: #1488cc;
-  border-radius: 23px;
-  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.4);
-  background: linear-gradient(90deg, #fff, #fff);
-  position: relative;
+  width: 800px;
+  height: 360px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  line-height: 25px;
+  /* background: linear-gradient(90deg, #fff, #fff); */
+  background-color: #f0f0f0;
+  margin: 25px;
+}
+
+.blog_post:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .container_copy {
   padding: 4.5rem 4rem 5rem 4rem;
-
-}
-
-.img_pod {
-  height: 110px;
-  width: 110px;
-  background: linear-gradient(90deg, #1488cc, #1488cc);
-  z-index: 10;
-  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
-  border-radius: 100%;
-  position: absolute;
-  left: -10%;
-  top: -13%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.teacher-img {
-  height: 8.3rem;
-  width: 8.3rem;
-  position: relative;
-  border-radius: 100%;
-  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
-  z-index: 1;
 }
 
 h3 {
@@ -88,49 +71,41 @@ p {
 
 .button2 {
   margin-top: -25px;
-  justify-content: center;
-  align-items: center;
   display: flex;
+  justify-content: space-between;
 }
 
-.calendar {
+.button2 .calendar {
+  letter-spacing: 0.9px;
   border: none;
-  margin-right: 180px;
-  margin-left: 0px;
-  outline: none;
-  background: linear-gradient(90deg, #1488cc, #ff5e62);
-  padding: 1.5rem 2rem;
-  border-radius: 50px;
+  width: 170px;
   height: 55px;
-  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 30px;
   font-size: 1.2rem;
   box-shadow: 1px 10px 2rem rgba(255, 94, 98, 0.5);
-  transition: all 0.2s ease-in;
-  text-decoration: none;
-} 
-.cal-report {
-  border: none;
-  margin-right: 40px;
-  width: 115%;
-  height: 55px;
-  outline: none;
-  background: linear-gradient(90deg, #1488cc, #ff5e62);
-  padding: 1.5rem 2rem;
-  border-radius: 50px;
-  color: white;
-  font-size: 1.2rem;
-  box-shadow: 1px 10px 2rem rgba(255, 94, 98, 0.5);
-  transition: all 0.2s ease-in;
-  text-decoration: none;
+  background-color:   #0077B5;
+  color: #fff;
 } 
 
-.logo:hover {
-  box-shadow: 0px 5px 1rem rgba(255, 94, 98, 0.5);
-}
+.button2 .cal-report {
+  letter-spacing: 0.9px;
+  border: none;
+  /* margin-right: 50px; */
+  width: 140px;
+  height: 55px;
+  padding: 1.5rem 2rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  box-shadow: 1px 10px 2rem rgba(255, 94, 98, 0.5);
+  background-color: #0077B5;
+  color: #fff;
+
+
+} 
 
 @media only screen and (max-width: 650px) {
   body {
     background-color: black;
   }
-
 }

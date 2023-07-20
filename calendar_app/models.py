@@ -1,14 +1,7 @@
 from django.db import models
-from Attendance.models import Student
+from Attendance.models import Student,Course
 # Create your models here.
 
-class Date(models.Model):
-    today_date = models.DateField(null=True,blank=True)
-    def __str__(self):
-        return str(self.today_date)
-    class Meta:
-        db_table = 'Date'
-        verbose_name_plural = 'Date'
 
 status_choice = [
         ('A','Absent'),
@@ -16,9 +9,11 @@ status_choice = [
     ]
 
 class Attendance(models.Model):
-    date = models.ForeignKey(Date,on_delete=models.CASCADE)
+    today_date = models.DateField(null=True,blank=True)
     student = models.ForeignKey(Student,on_delete=models.CASCADE)
     status = models.CharField(max_length=30,choices=status_choice)
+    course = models.ForeignKey(Course,on_delete=models.CASCADE, null=True)
+
     def __str__(self):
         return (self.student.name)
     

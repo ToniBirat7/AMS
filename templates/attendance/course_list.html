@@ -7,40 +7,30 @@
 {% block body %}
 
 <div class="center">
- <div class="blog_post">
-  <div class="img_pod">
-    <img src="{{course.my_image.url}}" alt="random image" class="teacher-img">
-  </div>
+  <h1 class="h1">Courses Taught</h1>
+  {% for course_info in course_detail %}
+  <div class="blog_post">
+    <!-- <div class="img_pod">
+      <img src="{{course_info.person.my_image.url}}" alt="random image" class="teacher-img">
+    </div> -->
+    <!-- <a href="{% url 'display-calendar' course_info.id %}" class="course_anchor"> -->
   <div class="container_copy">
-    <h3>Course  </h3>
-    <h1>{{course.course.title}} </h1>
-    <h3>Teacher  </h3>
-    <h1>{{course.user.first_name}} {{course.user.last_name}} </h1>
+    <h3>Course Name </h3>
+    <h1>{{course_info.title}} </h1>
+    <h3> Teacher  </h3>
+    <h1>{{course_info.person.user.first_name}} {{course_info.person.user.last_name}} </h1>
     <h3>Description  </h3>
-    <p>This Course is Taught by {{course.user.first_name | title}} {{course.user.last_name | title}}</p>
+    <p>This Course is Taught by {{course_info.person.user.first_name | title}} {{course_info.person.user.last_name | title}}</p>
     <div class="button2">
-    <a  href="{% url 'display-calendar' %}"><button class="calendar"> Take Attendance</button> </a>
-    <a  href='#' ><button class="cal-report">Report </button> </a>
+    <a  href="{% url 'display-calendar' course_info.id %}"><button class="calendar"> Take Attendance</button> </a>
+    <a  href="{% url 'download-report' data=course_info.id  %}"><button class="cal-report">Report </button> </a>
     </div>
   </div>
+<!-- </a> -->
 </div>
+{% endfor %}
 </div>
-
 {% endblock body %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% comment %}
 
