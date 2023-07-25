@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AMS | Dashboard</title>
+  <link rel="stylesheet" href="{% static 'admin/admin.css' %}" />
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  {% block link %}
+  {% endblock link %}
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="{% url 'admin-page' %}" class="logo">
+          <img src="{% static 'images/deerwalklogo.png' %}" alt="">
+          <span class="nav-item">DashBoard</span>
+        </a></li>
+        <li><a href="{% url 'admin-page' %}">
+          <i class="fas fa-home"></i>
+          <span class="nav-item">Home</span>
+        </a></li>
+        <li><a href="{% url 'user-reg' %}">
+            <i class="fas fa-user-plus"></i>
+          <span class="nav-item">User Registration</span>
+        </a></li>
+        <li><a href="{% url 'person-reg' %}">
+          <i class="fas fa-user-tie"></i>
+        <span class="nav-item">Add Teacher</span>
+      </a></li>
+        <li><a href="{% url 'add-course' %}">
+            <i class="fas fa-plus"></i>
+          <span class="nav-item">Add Course</span>
+        </a></li>
+        <li><a href="{% url 'add-students' %}">
+            <i class="fas fa-user-graduate"></i>
+            <span class="nav-item">Add Student</span>
+          </a></li>
+          <li><a href="{% url 'add-students-class' %}">
+            <i class="fas fa-book-reader"></i>
+            <span class="nav-item">Add Student Class</span>
+          </a></li>
+        <li><a href="{% url 'logout' %}" class="logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+        
+      </ul>
+    </nav>
+
+    {% block body %}
+      
+    <section class="main">
+      <div class="main-top">
+        <h1>Teachers</h1>
+        <i class="fas fa-user-cog"></i>
+      </div>
+      
+      <div class="main-skills">
+        {% for person in persons %}
+        <div class="card">
+          <img src="{{person.my_image.url}}">
+          <h4>{{person.user.first_name}} {{person.user.last_name}}</h4>
+          <h5>Address</h5><span>{{person.address}}</span>
+          <h5>DOB</h5><span>{{person.DOB}}</span>
+          <div class="per">
+            <!-- <table>
+              <tr>
+                <td><span>Address</span></td>
+                <td><span>Age</span></td>
+              </tr>
+              <tr>
+                <td>{{person.address}}</td>
+                <td>{{person.age}}</td>
+              </tr>
+            </table> -->
+          </div>
+          </div>
+        {% endfor %}
+      </div>
+      <section class="attendance">
+        <h1>Student List</h1>
+        <div class="attendance-list">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Enrolled Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for student in students %}
+              <tr>
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.age}}</td>
+                <td>{{student.address}}</td>
+                <td>{{student.phone_number}}</td>
+                <td>{{student.date_created}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="main-course">
+        <h1>Upcoming Courses</h1>
+        <div class="course-box">
+          <div class="course">
+            <div class="box">
+              <h3>HTML</h3>
+              <br>
+              <h5>Full Course on HTML from Scratch  </h5>
+              <i class="fab fa-html5 html"></i>
+            </div>
+            <div class="box">
+              <h3>CSS</h3>
+              <h5>Full Course on CSS from Scratch  </h5>
+              <i class="fab fa-css3-alt css"></i>
+            </div>
+            <div class="box">
+              <h3>JavaScript</h3>
+              <h5>Full Course on JavaScript from Scratch  </h5>
+              <i class="fab fa-js-square js"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+    {% endblock body %}
+  </div>
+</body>
+</html>

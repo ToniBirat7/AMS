@@ -2,21 +2,22 @@
 {% load custom_filters %}
 {% load static %}
 {% block link %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 <link rel="stylesheet" href="{% static 'student_list.css' %}">
 {% endblock link %}
 
 {% block body %}
 <div class="main">
-    <h1 class="h1">Machine Learning Attendance
-    <span class="h1-span"> {{today_date.day}} {{month}}  {{today_date.year}}</span></h1>
+    <h1 class="h1">DWIT Course Attendance 
+    <span class="h1-span">{{today_date.day}} {{month}}  {{today_date.year}}</span></h1>
     <div class="stu-table">
         <table>
             <thead>
                 <tr>
                     <th class="name-col-1">Student Name</th>
                     {% for date in att_report %}
-                        <th>{{ date.day }}</th>
+                        <th class="date-col">{{ date.day }}</th>
                     {% endfor %}
                     <th class="missed-col">Status</th>
                 </tr>
@@ -38,28 +39,156 @@
                                 {% endwith %}
                             </td>
                         {% endfor %}
-                        <td class="attend-col"><select name="{{student.student.id}}">
-                            <option value="A"><button>Absent</button></option>
-                            <option value="P"><button>Present</button></option>
+                        <td class="attend-col">
+                            <div class="input-box">
+                                <select name="{{student.student.id}}" class="custom-class" required id="id_sex">
+                               <option value="A" selected>Absent</option>
+                               <option value="P">Present</option>
+                             </select>
+                         </div>
+                            <!-- <option value="A"><button>Absent</button></option>
+                            <option value="P" selected><button>Present</button></option> -->
                         </select></td>
+                        
                     </tr>
                 {% endfor %}
-                <tr>
-                    <td class="name-col"></td>
-                    <td class="attend-col"></td>
-                    <td class="attend-col"></td>
-                    <td class="attend-col"></td>
-                    <td class="attend-col"></td>
-                    <td class="attend-col"></td>
-                    <td class="attend-col"></td>
-                    <td class="attend-col"></td>
-                    <td class="attend-col"><button type="submit">Submit</button></td>
-                </tr>
-                </form>
             </tbody>
         </table>
     </div>
+    <div>
+        <button type="submit" class="primary">Submit</button>
     </div>
+</form>
 
+{% if messages %}
+{% for message in messages %}
+    <div class="toast" id="toast{{ forloop.counter }}">
+      <div class="toast-content">
+          <i class="fas fa-solid fa-check check"></i>
+          <div class="message">
+              <!-- <span class="text text-1">Success!</span> -->
+              <span class="text text-2">{{message}}</span>
+          </div>
+      </div>
+      <!-- <i class="fa-solid fa-xmark close"></i> -->
+      <i class="fas fa-times close" id="close{{ forloop.counter }}"></i>
+      <div class="progress"></div>
+  </div>
+  {%endfor%}
+
+<style>
+
+.toast{
+position: absolute;
+top: 90px;
+left: 57%;
+border-radius: 12px;
+background: #fff;
+padding: 20px 35px 20px 25px;
+box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+border-left: 6px solid #4070f4;
+overflow: hidden;
+transform: translateX(calc(100% + 30px));
+transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+.toast.active{
+transform: translateX(0%);
+}
+.toast .toast-content{
+display: flex;
+align-items: center;
+}
+.toast {
+        transition: opacity 0.5s, height 0.5s, margin 0.5s, padding 0.5s;
+    }
+.toast-content .check{
+display: flex;
+align-items: center;
+justify-content: center;
+height: 35px;
+width: 35px;
+background-color: #4070f4;
+color: #fff;
+font-size: 20px;
+border-radius: 50%;
+}
+.toast-content .message{
+display: flex;
+flex-direction: column;
+margin: 0 20px;
+}
+.message .text{
+font-size: 20px;
+font-weight: 400;;
+color: #666666;
+}
+.message .text.text-1{
+font-weight: 600;
+color: #333;
+}
+.toast .close{
+position: absolute;
+top: 10px;
+right: 15px;
+padding: 5px;
+cursor: pointer;
+opacity: 0.7;
+}
+.toast .close:hover{
+opacity: 1;
+}
+.toast .progress{
+position: absolute;
+bottom: 0;
+left: 0;
+height: 3px;
+width: 100%;
+background: #ddd;
+}
+.toast .progress:before{
+content: '';
+position: absolute;
+bottom: 0;
+right: 0;
+height: 100%;
+width: 100%;
+background-color: #4070f4;
+}
+.progress.active:before{
+animation: progress 5s linear forwards;
+}
+@keyframes progress {
+100%{
+    right: 100%;
+}
+}
+</style>
+
+<script>
+{% for message in messages %}
+var toast{{ forloop.counter }} = document.getElementById('toast{{ forloop.counter }}');
+var close{{ forloop.counter }} = document.getElementById('close{{ forloop.counter }}');
+
+close{{ forloop.counter }}.addEventListener('click', function() {
+    removeToast(toast{{ forloop.counter }});
+});
+
+setTimeout(function() {
+    removeToast(toast{{ forloop.counter }});
+}, 3000);
+{% endfor %}
+
+function removeToast(el) {
+el.style.opacity = '0';
+el.style.height = '0';
+el.style.margin = '0';
+el.style.padding = '0';
+setTimeout(function() {
+    el.remove();
+}, 500); // delay should match the transition duration
+}
+</script>
+{% endif %}
+    </div>
 {% endblock body %}
 

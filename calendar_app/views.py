@@ -88,6 +88,7 @@ def ChooseDate(request,date):
             print('Student Info')
             print(student_info.student.id,status_value)
             Attendance.objects.create(today_date = new_date, student_id = student_info.student.id, status = status_value, course_id = course_id_global)
+        messages.success(request,"Attendance Taken Successfully")
         return render(request,'calendar/student_list.html', {'att_report': date_list,'student_status': student_attendance,'student_list': student_list_course,'today_date': todays_date,'month': month_name,}) 
     else:
         return render(request, 'calendar/student_list.html', {

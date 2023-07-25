@@ -151,12 +151,12 @@ header {
 }
 
 .container header .brandLogo figure img {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .container header .brandLogo span {
-  font-size: var(--xl-fs);
+  font-size: 20px;
   font-weight: 700;
   margin-left: var(--m-0-5);
 }
@@ -185,27 +185,50 @@ header {
   margin: 15px;
   padding: 10px;
 }
-.container .userProfile .profile .media-file .image {
+.container .userProfile .profile .media-file label {
+  padding: 10px;
   cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  background-color: #e8e8e8;
+  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 90px;
 
 }
+
+.container .userProfile .profile .media-file input {
+  display: none;
+}
 .container .userProfile .profile  .remove {
-  margin-top: 7px;
-  margin-left: 37px;
-  color: #090909;
-  padding: 1px;
-  justify-content: center;
-  align-items: center;
+  padding: 10px;
   cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  background: #e8e8e8;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.container .userProfile .profile  .remove a{
+  text-decoration: none;
+  color: #000;
 }
 
 .container .userProfile .profile .media-file .upload {
   margin-top: 9px;
-  margin-left: 43px;
+  margin-left: 80px;
   padding: 1px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 10px;
+  background: #e8e8e8;
+  border-radius: 5px;
+  
 }
 /* ===== =====>>  Work & Skills Css Start  <<===== ===== */
 .container .work_skills {
@@ -215,7 +238,7 @@ header {
 .work_skills .work .heading,
 .work_skills .skills .heading {
   position: relative;
-  font-size: var(--xs-fs);
+  font-size: 15px;
   color: rgba(0, 0, 0, 0.6);
   text-transform: uppercase;
   margin-bottom: var(--m-1-5);
@@ -231,44 +254,27 @@ header {
   width: 88%;
   background: var(--bg6-color);
 }
-
-.work_skills .work .primary,
-.work_skills .work .secondary {
-  position: relative;
-}
+ 
 
 .work_skills .work .primary h1,
-.work_skills .work .secondary h1 {
-  font-size: var(--l-fs);
+.work_skills .work .primary p {
+  font-size: 20px;
   color: var(--f3-color);
   margin-bottom: var(--m-0-6);
-}
-
-.work_skills .work .primary span,
-.work_skills .work .secondary span {
-  position: absolute;
-  top: 0;
-  right: 3rem;
-  font-weight: 700;
-  font-size: var(--s-fs);
-  color: var(--f5-color);
-  background: #e6f2ff;
-  padding: var(--p-0-4) var(--p-1-0);
-  border-radius: 0.4rem;
 }
 
 .work_skills .work .primary p,
 .work_skills .work .secondary p {
   margin-bottom: var(--m-1-8);
-  font-size: var(--m-fs);
   color: rgba(0, 0, 0, 0.6);
   line-height: 1.6rem;
+  font-size: 18px;
 }
 
 /* =====>>  Skills Bars Css  <<===== */
 .work_skills .skills ul li {
   position: relative;
-  font-size: var(--m-fs);
+  /* font-size: var(--m-fs); */
   line-height: 1.8rem;
   margin: var(--m-0-5);
   color: var(--f2-color);
@@ -312,7 +318,7 @@ header {
 }
 
 .userDetails .userName h1 {
-  font-size: var(--xxxl-fs);
+  font-size: 25px;
 }
 
 .userDetails .userName .map {
@@ -324,21 +330,29 @@ header {
 
 .userDetails .userName .map .ri {
   margin-right: var(--m-0-3);
-  font-size: var(--m-fs);
+  font-size: 20px;
 }
 
 .userDetails .userName .map span {
-  font-size: var(--s-fs);
+  font-size: 20px;
   color: var(--f3-color);
   font-weight: 700;
 }
 
 .userDetails .userName p {
-  font-size: var(--m-fs);
+  font-size: 20px;
   font-weight: 700;
   color: var(--f5-color);
-  margin-bottom: var(--m-1-8);
-  margin-top: 7px;
+  /* margin-bottom: var(--m-1-8); */
+  margin-top: 20px;
+
+}
+
+.userDetails .userName h2 {
+  font-size: 20px;
+  font-weight: 700;
+  /* margin-bottom: var(--m-1-8); */
+  margin-top: 20px;
 
 }
 
@@ -420,15 +434,6 @@ header {
   margin-bottom: var(--m-2-5);
 }
 
-.timeline_about .tabs ul::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--bg7-color);
-}
 
 .timeline_about .tabs ul li {
   position: relative;
@@ -436,7 +441,6 @@ header {
   align-items: center;
   margin-right: var(--m-2-5);
   padding-bottom: var(--p-0-8);
-  cursor: pointer;
 }
 
 .timeline_about .tabs ul li span {
@@ -460,10 +464,10 @@ header {
 .timeline_about .contact_info .heading,
 .timeline_about .basic_info .heading 
 {
-  font-size: var(--xs-fs);
   color: var(--f4-color);
   text-transform: uppercase;
   margin-bottom: var(--m-1-5);
+  font-size: 20px;
 }
 
 .timeline_about .contact_info ul,
@@ -481,19 +485,24 @@ header {
 .timeline_about .basic_info ul li h1 
 {
   font-weight: 500;
-  font-size: var(--m-fs);
   min-width: 12rem;
 }
 
 .timeline_about .contact_info ul li span,
 .timeline_about .basic_info ul li span {
-  font-size: var(--m-fs);
+  /* font-size: var(--m-fs); */
+  font-size: 15px;
+
 }
 
 .timeline_about .contact_info ul .phone span,
 .timeline_about .contact_info ul .email span,
-.timeline_about .contact_info ul .site span {
-  color: var(--f5-color);
+.timeline_about .contact_info ul .site span,
+.timeline_about .contact_info ul .address span
+ {
+  /* color: var(--f5-color); */
+  font-size: 15px;
+
 }
 
 .edit-profile {
@@ -516,7 +525,7 @@ header {
   border: 1px solid #e8e8e8;
   box-shadow: 6px 6px 12px #c5c5c5,
              -6px -6px 12px #ffffff;
-  cursor: pointer;
+
 }
  .edit-profile .ri-pencil-fill{
   padding: 10px;
@@ -580,3 +589,4 @@ font-size: 18px;
 font-family: 'Times New Roman', Times, serif;
 color: #000;
 }
+

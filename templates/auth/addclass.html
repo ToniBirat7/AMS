@@ -1,0 +1,401 @@
+{% extends "auth/admin.html" %}
+{% block link %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> -->
+{% endblock link %}
+{% block body %}
+<div class="body">
+    <div class="containers">
+        <div class="title">Student Class Details</div>
+        <div class="content">
+      <form  method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Choose Students</span>
+                <select name="student" id="teacher" class="custom-class select2-multiple" multiple>
+                    {% for student in students %}
+                    <option value="{{student.id}}" >{{student.name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div class="input-box">
+                <!-- <label for="teacher">Teacher</label> -->
+                <span class="details">Choose Course</span>
+                <select name="course" id="teacher" class="custom-class" required>
+                    {% for course in courses %}
+                    <option value="{{course.id}}">{{course.title}} </option>
+                    {% endfor %}
+                </select>
+              </div>
+
+        </div>
+        <div class="button">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+        </div>
+    </div>
+     
+    {% if messages %}
+    {% for message in messages %}
+        <div class="toast" id="toast{{ forloop.counter }}">
+          <div class="toast-content">
+              <i class="fas fa-solid fa-check check"></i>
+              <div class="message">
+                  <!-- <span class="text text-1">Success!</span> -->
+                  <span class="text text-2">{{message}}</span>
+              </div>
+          </div>
+          <!-- <i class="fa-solid fa-xmark close"></i> -->
+          <i class="fas fa-times close" id="close{{ forloop.counter }}"></i>
+          <div class="progress"></div>
+      </div>
+      {%endfor%}
+ 
+<style>
+
+.toast{
+    position: absolute;
+    top: 25px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    border-left: 6px solid #4070f4;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+.toast.active{
+    transform: translateX(0%);
+}
+.toast .toast-content{
+    display: flex;
+    align-items: center;
+}
+.toast {
+            transition: opacity 0.5s, height 0.5s, margin 0.5s, padding 0.5s;
+        }
+.toast-content .check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    background-color: #4070f4;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+.toast-content .message{
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+.message .text{
+    font-size: 20px;
+    font-weight: 400;;
+    color: #666666;
+}
+.message .text.text-1{
+    font-weight: 600;
+    color: #333;
+}
+.toast .close{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.toast .close:hover{
+    opacity: 1;
+}
+.toast .progress{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+}
+.toast .progress:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #4070f4;
+}
+.progress.active:before{
+    animation: progress 5s linear forwards;
+}
+@keyframes progress {
+    100%{
+        right: 100%;
+    }
+}
+</style>
+
+<script>
+{% for message in messages %}
+    var toast{{ forloop.counter }} = document.getElementById('toast{{ forloop.counter }}');
+    var close{{ forloop.counter }} = document.getElementById('close{{ forloop.counter }}');
+    
+    close{{ forloop.counter }}.addEventListener('click', function() {
+        removeToast(toast{{ forloop.counter }});
+    });
+
+    setTimeout(function() {
+        removeToast(toast{{ forloop.counter }});
+    }, 3000);
+{% endfor %}
+
+function removeToast(el) {
+    el.style.opacity = '0';
+    el.style.height = '0';
+    el.style.margin = '0';
+    el.style.padding = '0';
+    setTimeout(function() {
+        el.remove();
+    }, 500); // delay should match the transition duration
+}
+</script>
+  {% endif %}
+</div>
+    
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.input-box select.custom-class {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.select2-container--default .select2-selection--multiple {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: 45px;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #9b59b6;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: default;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 0 5px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: #fff;
+}
+.input-box select.custom-class:focus,
+.input-box select.custom-class:valid {
+  border-color: #9b59b6;
+}
+/* Style the label */
+.input-box .custom-file-upload {
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+.img{
+  margin-top: 20px;
+}
+/* Change style when user hovers over the label */
+.body{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.containers{
+  max-width: 800px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.container .title{
+  font-size: 30px;
+  font-weight: 500;
+  position: relative;
+}
+.container .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+ form .gender-details .gender-title{
+  font-size: 20px;
+  font-weight: 500;
+ }
+ form .category{
+   display: flex;
+   width: 80%;
+   margin: 14px 0 ;
+   justify-content: space-between;
+ }
+ form .category label{
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+ form .category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+ #dot-1:checked ~ .category label .one,
+ #dot-2:checked ~ .category label .two,
+ #dot-3:checked ~ .category label .three{
+   background: #9b59b6;
+   border-color: #d9d9d9;
+ }
+ form input[type="radio"]{
+   display: none;
+ }
+ form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+ }
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.select2-multiple').select2({
+        placeholder: 'Click or Search'  // Change this to your desired placeholder text
+    });
+});   
+</script>
+
+{% endblock body %}

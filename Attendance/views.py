@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Person,Course
 from .forms import ImageForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def logged_In(request):
@@ -27,6 +28,8 @@ def Profile(request):
     if teacher_detail is not None:
         if request.method == 'GET':
             form = ImageForm()
+            print('*********')
+            print(teacher_detail.my_image)
         else:
             form = ImageForm(request.POST, request.FILES)
             if form.is_valid():
@@ -43,17 +46,21 @@ def ImageDelete(request):
     data.my_image.delete()
     data.my_image = 'NA'
     data.save()
+    print('*********')
     return redirect('profile')
 
 def EditProfile(request):
     user_id = request.user.id
+    data = Person.objects.get(user_id=user_id)
     if request.method == 'GET':
-        data = Person.objects.get(user_id=user_id)
         return render(request, 'attendance/edit-profile.html',{'datas' : data})
     else:
-        data = Person.objects.get(user_id=user_id)
+        data = Person.objects.select_related().get(user_id=user_id)
         print(data.id)
         print(request.POST)
+        user_data = User.objects.get(id=user_id)
+        user_data.email = request.POST['email']
+        user_data.save()
         data.primary_number = request.POST['primary_number']
         data.address = request.POST['address']
         data.secondary_number = request.POST['secondary_number']

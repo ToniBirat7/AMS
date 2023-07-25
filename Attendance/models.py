@@ -44,6 +44,10 @@ class Course(models.Model):
 
 class Student(models.Model):
     name = models.CharField(max_length=30)
+    address = models.CharField(max_length=30, null=True)
+    phone_number = models.CharField(max_length=10,null=True)
+    age = models.CharField(max_length=2,null=True)
+    date_created = models.DateField(auto_now_add=True,null=True)
 
     def __str__(self):
         return self.name

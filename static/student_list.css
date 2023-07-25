@@ -1,24 +1,39 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-th {
-    background-color: #001f3f;
+th{
+    background-color: #34AF6D;
     color: #fff;
-    padding: 0.5em 6.3em;
+    padding: 0.2em 0em;
+} 
+.date-col {
+    /* border: solid; */
+    background-color: #0d5b93;
+    color: #fff;
+
 }
 .name-col-1 {
     text-align: center;
     padding: 0;
+    width: 200px;
 }
 
 td {
     border-top: 2px solid #eee;
-    padding: 0.5em 1em;
+    padding: 1em 1em;
     text-align: center;
 }
 
 
 /* Column types */
 th.missed-col {
-    background-color: #f00;
+    background-color: #34AF6D;
+    width: 200px;
+    padding: 0.2em 0em;
+    font-size: 18px;
 }
 
 td.missed-col {
@@ -28,32 +43,28 @@ td.missed-col {
 }
 
 .name-col {
-    text-align: left;
+    text-align: center;
+    font-size: 18px;
 }
 
 .main{
-    overflow: hidden;
-   display: block;
-   margin-top: 10px;
-   margin-bottom: 300px;
-   width: max-content;
-   height: max-content;  
-   text-align: left;
+   display: inline-block;
+   /* margin-top: 10px; */
+   width: 100%;
+   /* background-color: #f0f5f9; */
+   height: 100%;
+   justify-content: center;
+
 }
 
 .main .h1{
-    display: block;
-    margin: 0;
-    padding: 10px;
-    padding-bottom: 0;
-    position: relative;
-    font-family: "Raleway", sans-serif;
-    font-weight: 300;
-    font-size: 40px;
+    margin-top: 10px;
+    font-weight: 400;
+    text-align: center;
     text-transform: capitalize;
     color: #080808;
-
 }
+
 .main .h1 .h1-span{
     display: block;
     font-family: "Raleway", sans-serif;
@@ -61,11 +72,61 @@ td.missed-col {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 5px;
-    line-height: 2em;
+    line-height: 3em;
     color: rgba(0, 0, 0, 0.4);
-    padding-bottom: 5px;
 }
+
 .stu-table{
     justify-content: center;
-    align-items: center;
+    display: flex;
+    margin-top: 10px;
+    background-color:  #fff;
 }
+
+table{
+    width: 100%;
+    border: solid;
+    border-left: black;
+    border-right: black;
+    padding: 3px;
+}
+
+.input-box select.custom-class {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .input-box select.custom-class:focus,
+  .input-box select.custom-class:valid {
+    border-color: #0d5b93;
+  }
+
+.primary{
+        display: flex;
+        height: 45px;
+        margin-top: 10px;
+        margin-left: 45%;
+        width: 170px;
+        justify-content:center;
+        text-align: center;
+        outline: none;
+        border: none;
+        font-size: 17px;
+        padding: 10px;
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+        background: #0d5b93;
+        transition: all 0.3s ease;
+      }
+      .primary:hover{
+        transform: scale(0.95);
+      }
+  

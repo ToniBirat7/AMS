@@ -2,8 +2,8 @@
   <nav>
     <div class="left-section">
         <img src="{% static 'images/deerwalklogo.png' %}" alt="Logo" class="logo-image">
+      <a href="{% url 'logged_in' %}" class="course nav-link">Home</a>
       <a href="{% url 'profile' %}" class="profiles nav-link">Profile</a>
-      <a href="{% url 'logged_in' %}" class="course nav-link">Course</a>
     </div>
     <div class="right-section">
       <a href="{% url 'logout' %}" class="sign-out nav-link">Log Out</a>

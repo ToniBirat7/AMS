@@ -25,8 +25,6 @@
     
     <!-- ===== ===== Main-Container ===== ===== -->
     <div class="container">
-        
-
         <!-- ===== ===== Header/Navbar ===== ===== -->
         <header>
             <div class="brandLogo">
@@ -34,12 +32,15 @@
                 <span> Deerwalk Institute Of Technology</span>
             </div>
         </header>
-
-
         <!-- ===== ===== User Main-Profile ===== ===== -->
         <section class="userProfile card">
             <div class="profile">
-                <figure><img src="{{profile.my_image.url}}" alt="profile" width="250px" height="250px"></figure>
+                <figure>
+                {% if profile.my_image == 'NA' %}
+                <img src="{% static 'images/deerwalklogo.png' %}" alt="birat" width="250px" height="250px">
+                {% else%}
+                <img src="{{profile.my_image.url}}" alt="profile" width="250px" height="250px"></figure>
+                {% endif %}
             <div class="media-file">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -50,8 +51,6 @@
             </div> 
             </div>  
         </section>
-        
-
         <!-- ===== ===== Work & Skills Section ===== ===== -->
         <section class="work_skills card">
             <!-- ===== ===== Work Container ===== ===== -->
@@ -59,12 +58,10 @@
                 <h1 class="heading">work</h1>
                 <div class="primary">
                     <h1>Deerwalk Institute of Technology</h1>
-                    <!-- <span>Primary</span> -->
                     <p> Sifal <br> Kathmandu, Nepal</p>
             </div>
                 <br>
                 <br>
-                
             <!-- ===== ===== Skills Contaienr ===== ===== -->
             <div class="skills">
                 <h1 class="heading">Skills</h1>
@@ -86,64 +83,13 @@
                     <i class="ri-map-pin-fill ri"></i> 
                     <span>{{profile.address}}</span>
                 </div>
-                <h2>Courses Taught:</h2>
+                <h2>Courses Taught</h2>
                 {% for course_info in course_detail %}
-                <p>{{course_info.title}} &nbsp; &nbsp; Instructor</p>
+                <p>{{course_info.title}}</p>
                 {% endfor %}
             </div>
                 <br>
-            <div class="rank">
-                <h1 class="heading">Rankings Yaha Course Paxi ko review anusar ko rating</h1>
-                <!-- Rating field bata previous year ko rating ko data lyaune tei anusar star rakh
-                if rating gt something this rating else this rating 
-                
-                {% comment %}
-                {{profile.rating as rank}}
-                <span>{{rank}}</span>
-                {% if rank > 1 and rank <= 2%}
-                <div class="rating">
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate underrate"></i>
-                    <i class="ri-star-fill rate underrate"></i>
-                    <i class="ri-star-fill rate underrate"></i>
-                </div>
-                {% elif rank >2 and <=3 %}
-                <div class="rating">
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate underrate"></i>
-                    <i class="ri-star-fill rate underrate"></i>
-                </div>
-                {% elif rank >3 and <=4 %}
-                <div class="rating">
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate underrate"></i>
-                </div>
-                {% else}
-                <div class="rating">
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                </div>
-
-                {% endcomment %}
-                 -->
-                <span>8,6</span>
-                <div class="rating">
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate"></i>
-                    <i class="ri-star-fill rate underrate"></i>
-                    <i class="ri-star-fill rate underrate"></i>
-                </div>
-            </div>
+            
 
         </section>
        
@@ -154,11 +100,6 @@
         <section class="timeline_about card">
             <div class="tabs">
                 <ul>
-                    <li class="timeline">
-                        <i class="ri-briefcase-4-fill"></i> &nbsp;
-                        <span>Experience</span>
-                    </li>
-
                     <li class="about active">
                         <i class="ri-user-3-fill ri"></i>
                         <span>About</span>
@@ -181,7 +122,7 @@
 
                     <li class="address">
                         <h1 class="label">Address:</h1>
-                        <span class="info">{{profile.address}} <br> Address Detail</span>
+                        <span class="info">{{profile.address}} 
                     </li>
 
                     <li class="email">
@@ -192,10 +133,10 @@
                     <li class="site">
                         <h1 class="label">Social Media :</h1>
                         <!-- Take Links from Model Field -->
-                        <a href="facebook-link"><i class="ri-facebook-circle-line"></i> &nbsp; </a>
-                        <a href="twitter-link"><i class="ri-twitter-line"></i> &nbsp; </a>
-                        <a href="github-link"><i class="ri-github-fill"></i> &nbsp; </a>
-                        <a href="linkedin-link"><i class="ri-linkedin-box-fill"></i> &nbsp; </a>
+                        <a href=""><i class="ri-facebook-circle-line"></i> &nbsp; </a>
+                        <a href=""><i class="ri-twitter-line"></i> &nbsp; </a>
+                        <a href=""><i class="ri-github-fill"></i> &nbsp; </a>
+                        <a href=""><i class="ri-linkedin-box-fill"></i> &nbsp; </a>
                     </li>
                 </ul>
             </div>

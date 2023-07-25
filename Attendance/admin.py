@@ -8,7 +8,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Student)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name']
+    list_display = ['id', 'name','address','phone_number','age','date_created']
 
 @admin.register(Person)
 class CourseAdmin(admin.ModelAdmin):
